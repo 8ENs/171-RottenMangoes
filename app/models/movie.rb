@@ -2,6 +2,7 @@ class Movie < ActiveRecord::Base
 
   has_many :reviews
 
+  # TODO: not working
   mount_uploader :image, ImageUploader
 
   validates :title,
