@@ -1,6 +1,9 @@
 class SessionsController < ApplicationController
   
   def new
+    if current_user
+      redirect_to movies_path, notice: "You're already logged in!"
+    end
   end
 
   def create
