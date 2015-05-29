@@ -35,6 +35,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'pry'
 gem 'carrierwave'
 gem 'rmagick' #, '2.13.2'
+gem 'kaminari'
 
 # gem 'bootstrap-sass'
 

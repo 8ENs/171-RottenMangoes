@@ -1,14 +1,19 @@
 <h1>Admin (list of users)</h1>
 <hr>
-<% @users.each do |user| %>
-  <div>
+<%= paginate @users %>
+<ul>
+  <% @users.each do |user| %>
     <h4>
-      <%= user.firstname %> <%= user.lastname %> | 
-      <%= user.email %>
-      <% if user.admin? %>
-        | (admin)
-      <% end %>
-    </h4>
-    <hr>
-  </div>
-<% end %>
+      <li>
+        <%= user.full_name %> | 
+        <%= link_to user.email, admin_user_path(user) %>
+        <% if user.admin? %>
+          | (admin)
+        <% end %>
+        </h4>
+      </li>
+  <% end %>
+</ul>
+<hr>
+<%= link_to "Back to all movies", movies_path %>
+<hr>
