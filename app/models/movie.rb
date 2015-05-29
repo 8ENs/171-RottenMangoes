@@ -17,15 +17,15 @@ class Movie < ActiveRecord::Base
   validates :description,
     presence: true
 
-  validates :rating_out_of_ten,
-    presence: true
+ validates :image,
+    presence: true 
 
   # validates :poster_image_url,
   #   presence: true
   # TODO: validate for either :image or :poster_image_url
 
   validates :release_date,
-    presence: true, numericality: { minimum: 0, maximum: 10 }
+    presence: true
 
   validate :release_date_is_in_the_past
 
