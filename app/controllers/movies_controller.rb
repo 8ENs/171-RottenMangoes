@@ -1,6 +1,15 @@
 class MoviesController < ApplicationController
+  
   def index
-    @movies = Movie.order(:title)
+    case params[:duration].to_i
+    when 1 then query = "runtime_in_minutes < 90"
+    when 2 then query = "runtime_in_minutes BETWEEN 90 and 120"
+    when 3 then query = "runtime_in_minutes > 120"
+    end
+    @movies =  Movie.order(:title)
+                    .where('title LIKE ?', "%#{params[:title]}%")
+                    .where('director LIKE ?', "%#{params[:director]}%")
+                    .where(query)
   end
 
   def show
