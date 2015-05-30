@@ -6,12 +6,12 @@
   <% if @user.admin? %>
     (admin) |
   <% end %>
+  <!-- <%= link_to "edit", edit_admin_user_path(@user) %>, -->
   <%= link_to "delete", admin_user_path(@user), method: :delete, confirm: "You sure?" %>
 </h4>
 <h6>
   Created: <%= @user.created_at %> | 
   Updated: <%= @user.created_at %>
 </h6>
-<hr>
-<%= link_to "Back to all users", admin_users_path %>
-<hr>
+
+<%= render 'admin/users/footer' %>
