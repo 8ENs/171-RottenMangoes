@@ -53,6 +53,8 @@ class Admin::UsersController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
+    # clear session if deleting self (this has been tested but should not be used since 'delete' hidden on self)
+    session[:user_id] = nil if current_user == @user
     @user.destroy
     redirect_to admin_users_path, notice: "User deleted..."
   end
