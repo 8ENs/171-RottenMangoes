@@ -55,6 +55,10 @@ class Admin::UsersController < ApplicationController
     @user = User.find(params[:id])
     # clear session if deleting self (this has been tested but should not be used since 'delete' hidden on self)
     session[:user_id] = nil if current_user == @user
+    
+    # send notification email
+    UserMailer.delete_user_email(@user).deliver_now
+    
     @user.destroy
     redirect_to admin_users_path, notice: "User deleted..."
   end

@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
   
+  # NOT WORKING
+  before_destroy :goodbye_user
+
   def new
     @user = User.new
   end
@@ -19,6 +22,11 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:email, :firstname, :lastname, :password, :password_confirmation)
+  end
+
+  # NOT WORKING
+  def goodbye_user
+    UserMailer.delete_user_email(self).deliver
   end
 
 end
