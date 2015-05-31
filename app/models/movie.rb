@@ -33,15 +33,14 @@ class Movie < ActiveRecord::Base
     reviews.sum(:rating_out_of_ten)/reviews.size if reviews.size > 0
   end
 
-  def Movie.filter_movie(title, director, duration)
+  def Movie.filter_movie(title_or_director, duration)
     case duration.to_i
     when 1 then query = "runtime_in_minutes < 90"
     when 2 then query = "runtime_in_minutes BETWEEN 90 and 120"
     when 3 then query = "runtime_in_minutes > 120"
     end
     @movies =  Movie.order(title: :asc)
-                    .where('title LIKE ?', "%#{title}%")
-                    .where('director LIKE ?', "%#{director}%")
+                    .where('title LIKE ? OR director LIKE ?', "%#{title_or_director}%", "%#{title_or_director}%")
                     .where(query)
   end
 

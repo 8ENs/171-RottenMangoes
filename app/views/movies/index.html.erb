@@ -5,12 +5,8 @@
 <%= form_tag movies_path, method: :get do %>
   <h3>Movie Search</h3>
   <div>
-    <%= label_tag(:title, "Title:") %>
-    <%= text_field_tag(:title) %>
-  </div>
-  <div>
-    <%= label_tag(:director, "Director:") %>
-    <%= text_field_tag(:director) %>
+    <%= label_tag(:title_or_director, "Title or Director:") %>
+    <%= text_field_tag(:title_or_director) %>
   </div>
   <div>
     <%= label_tag(:duration, "Duration:") %>

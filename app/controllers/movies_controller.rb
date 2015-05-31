@@ -1,7 +1,7 @@
 class MoviesController < ApplicationController
 
   def index
-    @movies = Movie.filter_movie(params[:title], params[:director], params[:duration]).page(params[:page]).per(10)
+    @movies = Movie.filter_movie(params[:title_or_director], params[:duration]).page(params[:page]).per(10)
   end
 
   def show
