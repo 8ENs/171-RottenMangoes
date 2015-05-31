@@ -28,13 +28,9 @@
 <hr>
 
 <% @movies.each do |movie| %>
+  <div><%= link_to image_tag(movie.image_url(:thumb)), movie_path(movie) %></div>
   <div>
-    <%= link_to image_tag(movie.image_url(:thumb)), movie_path(movie) %>
-  </div>
-  <div>
-    <h2>
-      <%= link_to movie.title, movie_path(movie) %>
-    </h2>
+    <h2><%= link_to movie.title, movie_path(movie) %></h2>
     <h4>
       <%= movie.director %> | 
       <%= movie.runtime_in_minutes %> minutes | 

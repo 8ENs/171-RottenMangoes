@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   
   # NOT WORKING
-  before_destroy :goodbye_user
+  # before_destroy :goodbye_user
 
   def new
     @user = User.new
@@ -25,8 +25,8 @@ class UsersController < ApplicationController
   end
 
   # NOT WORKING
-  def goodbye_user
-    UserMailer.delete_user_email(self).deliver
-  end
+  # def goodbye_user
+  #   UserMailer.delete_user_email(self).deliver
+  # end
 
 end
