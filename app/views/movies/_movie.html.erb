@@ -1,0 +1,14 @@
+<div><%= link_to image_tag(movie.image_url(:thumb)), movie_path(movie) %></div>
+<div>
+  <h2><%= link_to movie.title, movie_path(movie) %></h2>
+  <h4>
+    <%= movie.director %> | 
+    <%= movie.runtime_in_minutes %> minutes | 
+    <%= formatted_date(movie.release_date) %>
+    <% if movie.review_average %>
+      | <%= movie.review_average %>/10
+    <% end %>
+  </h4>
+  <!-- <p><%= movie.description %></p> -->
+  <hr>
+</div>
